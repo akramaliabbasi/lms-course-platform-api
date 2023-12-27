@@ -1,0 +1,135 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/v1/enrolments": {
+            "get": {
+                "summary": "Display a paginated list of enrolments.",
+                "operationId": "4bd43fb857de261110826ba82c3c3b9a",
+                "parameters": [
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of items to display per page",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Paginated list of enrolments"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new enrolment record for a user in a specific course.",
+                "operationId": "76b754bbdcc53c394526b86f3a197058",
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Enrolment created successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/enrolments/store": {
+            "post": {
+                "summary": "Create a new enrolment record with uniqueness validation.",
+                "operationId": "13300b0f06a130221b28818c4ba3ed68",
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Enrolment created successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/enrolments/{id}": {
+            "get": {
+                "summary": "Retrieve details of a specific user's enrolment in a course.",
+                "operationId": "c96159bf9798da86434fc238d5f69749",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enrolment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Enrolment details"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update the status of a user's enrolment (e.g., from active to completed).",
+                "operationId": "555c599ac8c5f7a221c790ab25413d29",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enrolment ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Enrolment updated successfully"
+                    }
+                }
+            }
+        },
+        "/api/v1/enrolments/list": {
+            "get": {
+                "summary": "Retrieve a list of all enrolments for a specific course or all enrolments for a specific user.",
+                "operationId": "852e42452ccb436131e31a553f9dd038",
+                "parameters": [
+                    {
+                        "name": "course_id",
+                        "in": "query",
+                        "description": "Course ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "User ID",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of enrolments"
+                    }
+                }
+            }
+        }
+    }
+}

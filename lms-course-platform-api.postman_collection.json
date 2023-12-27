@@ -1,0 +1,292 @@
+{
+	"info": {
+		"_postman_id": "b0243a20-6b00-4988-b743-ce288452ec61",
+		"name": "lms-course-platform-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15198469"
+	},
+	"item": [
+		{
+			"name": "Course Enrollment",
+			"item": [
+				{
+					"name": "Course Assign to student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "user_id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "course_id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "course_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/enrolments",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"enrolments"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "course_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course change status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "user_id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "course_id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user_id\": 2,\r\n  \"course_id\": 2,\r\n  \"status\": \"completed\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/enrolments/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"enrolments",
+								"1"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "completed",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "course_id",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get course or user details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "user_id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "course_id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user_id\": 1,\r\n  \"course_id\": 2,\r\n  \"status\": \"active\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/enrolments/list",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"enrolments",
+								"list"
+							],
+							"query": [
+								{
+									"key": "course_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All enrolment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "user_id",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "course_id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/enrolments?per_page=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"enrolments"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "id",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/courses?name=Computer Science&description=Computer Science&teacher_id=1&status=enabled",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Computer Science",
+									"description": "required|string"
+								},
+								{
+									"key": "description",
+									"value": "Computer Science",
+									"description": "required|string"
+								},
+								{
+									"key": "teacher_id",
+									"value": "1",
+									"description": "required|exists:users,id"
+								},
+								{
+									"key": "status",
+									"value": "enabled",
+									"description": "required|in:enabled,disabled"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
