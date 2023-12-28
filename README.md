@@ -56,11 +56,12 @@ Email settings (using a provider like Mailgun, Amazon SES, etc)
 
 * Run `php artisan l5-swagger:generate` #if you want to update based on OpenAI 3.0
 
-2- Demo is attached  seprately for API test. (download and watch)
+2- The demo is attached  separately for the API test. (download and watch)
 
 
- 2.1 Demo-lms-course-platform-api.mp4
- 2.2 
+ 2.1 https://www.youtube.com/watch?v=6wQSKHb1Bj0
+
+ 
 
 
 
