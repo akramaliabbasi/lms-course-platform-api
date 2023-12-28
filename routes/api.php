@@ -1,11 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-//use App\Http\Controllers\API\V1\CourseController;
-
-
+use App\Http\Controllers\API\V1\EnrolmentController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,24 +20,29 @@ Route::prefix('v1')
     ->namespace('API\\V1')
     ->group(
         function ($route) {
-           // Route::post('subscribe/{id}', 'CourseController@subscribe')->middleware('auth:api');
            
-			Route::middleware(['throttle:60,1'])->group(function () {
+            // Just added the unsecure API with that you are allowing 60 requests per minute.
+            Route::middleware(['throttle:60,1'])->group(function () {
 				Route::apiResource('courses', CourseController::class);
 			});
 			
 			Route::middleware(['throttle:60,1'])->group(function () {
-				Route::apiResource('enrolments', EnrolmentController::class);
-				Route::get('enrolments/list', [EnrolmentController::class, 'listEnrolments']);
+          	    Route::post('enrolment/add', [EnrolmentController::class, 'create']);
+                Route::put('enrolment/edit', [EnrolmentController::class, 'update']);
+                Route::get('enrolment/details', [EnrolmentController::class, 'show']);
+				Route::get('enrolment/list', [EnrolmentController::class, 'listEnrolments']);
+                Route::get('enrolments', [EnrolmentController::class, 'index']);
 			});
          
         }
     );
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::post('subscribe/{id}', 'CourseController@subscribe')->middleware('auth:api');
+    // Just added the secure API with authentication .    
+    Route::middleware('auth:api')->get('/user', function (Request $request) {
+        return $request->user();
+    });
 
-Route::apiResource('message','MessageController')->middleware('auth:api');
+    Route::post('subscribe/{id}', 'CourseController@subscribe')->middleware('auth:api');
+
+    Route::apiResource('message','MessageController')->middleware('auth:api');

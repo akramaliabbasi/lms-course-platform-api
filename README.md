@@ -1,7 +1,5 @@
 # LMS-Course-Platform
 
-- [About](#about)
-- [License](#license)
 
 ### About
 LMS-Course-Platformis a Learning Management System (or LMS) that facilitates the creation of educational content by allowing you to manage courses and learning modules. The platform is simple and intuitive and provides features for:
@@ -52,12 +50,25 @@ Email settings (using a provider like Mailgun, Amazon SES, etc)
 * Start the Websocket server (for chat functionality) `php artisan websockets:serve`
 
 
-API documentation
+1- API documentation 
 
 #http://127.0.0.1:8000/api/documentation#/default
 
-API import in Postman find the file name 
+* Run `php artisan l5-swagger:generate` #if you want to update based on OpenAI 3.0
+
+2- Demo is attached  seprately for API test. (download and watch)
+
+
+ 2.1 Demo-lms-course-platform-api.mp4
+ 2.2 
+
+
+
+API import in Postman find the file name (find)
+
 #lms-course-platform-api.postman_collection.json
+
+
 
 
 
