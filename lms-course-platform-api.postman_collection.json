@@ -25,23 +25,8 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "user_id",
-									"value": "2",
-									"type": "text"
-								},
-								{
-									"key": "course_id",
-									"value": "2",
-									"type": "text"
-								}
-							]
-						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/enrolments",
+							"raw": "http://127.0.0.1:8000/api/v1/enrolment/add?user_id=1&course_id=1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -53,18 +38,17 @@
 							"path": [
 								"api",
 								"v1",
-								"enrolments"
+								"enrolment",
+								"add"
 							],
 							"query": [
 								{
 									"key": "user_id",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "course_id",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								}
 							]
 						}
@@ -89,12 +73,8 @@
 								"disabled": true
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"user_id\": 2,\r\n  \"course_id\": 2,\r\n  \"status\": \"completed\"\r\n}\r\n"
-						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/enrolments/1",
+							"raw": "http://127.0.0.1:8000/api/v1/enrolment/edit?id=1&status=completed",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -106,24 +86,17 @@
 							"path": [
 								"api",
 								"v1",
-								"enrolments",
-								"1"
+								"enrolment",
+								"edit"
 							],
 							"query": [
 								{
+									"key": "id",
+									"value": "1"
+								},
+								{
 									"key": "status",
-									"value": "completed",
-									"disabled": true
-								},
-								{
-									"key": "user_id",
-									"value": "2",
-									"disabled": true
-								},
-								{
-									"key": "course_id",
-									"value": "2",
-									"disabled": true
+									"value": "completed"
 								}
 							]
 						}
@@ -131,10 +104,38 @@
 					"response": []
 				},
 				{
-					"name": "Get course or user details",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
+					"name": "Get course or user details Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/enrolment/details?user_id=2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"enrolment",
+								"details"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "2"
+								}
+							]
+						}
 					},
+					"response": []
+				},
+				{
+					"name": "Get specific user courses deitailss",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -151,12 +152,8 @@
 								"disabled": true
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"user_id\": 1,\r\n  \"course_id\": 2,\r\n  \"status\": \"active\"\r\n}\r\n"
-						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/enrolments/list",
+							"raw": "http://127.0.0.1:8000/api/v1/enrolment/list",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -168,7 +165,7 @@
 							"path": [
 								"api",
 								"v1",
-								"enrolments",
+								"enrolment",
 								"list"
 							],
 							"query": [
@@ -179,7 +176,7 @@
 								},
 								{
 									"key": "user_id",
-									"value": "1",
+									"value": "2",
 									"disabled": true
 								}
 							]
